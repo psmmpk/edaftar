@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="css/jquery.mobile.min.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.mobile.min.js"></script>
+
+</head>
+
+<script>
+$( document ).ready(function() {
+  // Pengiraan menggunakan ajax
+  $('#hantar').click(function(){
+			$.ajax({
+			type: 'POST',
+			url: 'daftar.php',
+			data: $("#form1").serialize(),
+			success: function(data){
+				$('#ubah').html(data);
+		$('#try_ajax').popup("open");
+		//$('#try_ajax').show();
+				}
+			});	
+		});	
+	});
+
+</script>
+<form id="form1">
+<div data-role="header">
+<h3>DAFTAR</h3>
+</div>
+<br />
+<div class="ui-corner-all custom-corners">
+  <div class="ui-bar ui-bar-a">
+    <h3>Kejadian</h3>
+  </div>
+  <div class="ui-body ui-body-a">
+    <p><div class="ui-field-contain">
+		<label>Tarikh : </label>
+		<input type="date" name="tarikh" id="tarikh" />
+	</div>
+	<div class="ui-field-contain">
+		<label>Masa : </label>
+		<input type="time" name="masa" id="masa" />
+	</div>
+	<div data-role="listview">
+	</div>
+	<div class="ui-field-contain">
+		<label for="tmn">Taman : </label>
+		<select name="tmn" id="tmn" data-native-menu="false">
+				<option>Sila Pilih</option>
+				<option value="bunga">Bunga</option>
+				<option value="binatang">Singa</option>
+				<option value="awan">Awan Biru</option>
+		</select>
+	</div>
+	<div class="ui-field-contain">
+		<label for="jalan">Jalan : </label>
+		<select name="jalan" id="jalan" data-native-menu="false">
+				<option>Sila Pilih</option>
+				<option value="bunga1">Bunga 1</option>
+				<option value="binatang1">Singa 1</option>
+				<option value="awan1">Awan Biru 1</option>
+		</select>
+	</div>
+	</p>
+  </div>
+  
+ <div class="ui-corner-all custom-corners">
+  <div class="ui-bar ui-bar-a">
+    <h3>Butiran Kesalahan :</h3>
+  </div>
+  <div class="ui-body ui-body-a">
+    <p><div class="ui-field-contain">
+		<label>Lokasi : </label>
+		<textarea cols="40" rows="8" name="lokasi" id="lokasi"></textarea>
+	</div>
+	<div class="ui-field-contain">
+		<label>Ulasan : </label>
+		<textarea cols="40" rows="8" name="ulasan" id="ulasan"></textarea>
+</div>
+	</p>
+  </div>
+  <input type="button" id="hantar" value="Simpan">
+</form>
+
+<div id="try_ajax" data-role="popup" data-dismissible="false" style="max-width:400px;">
+	<div data-role="header">
+		<h3>Hasil</h3>
+	</div>
+	<div role="main" class="ui-content">
+			<div id="ubah">
+				html(data) kat sini
+			</div>
+		<a href="#" class="ui-btn ui-corner-all ui-shadow" data-rel="back">Kembali</a>
+	</div>
+	</div>
+	
+	<div data-role="footer" data-position="fixed">
+  <div data-role="navbar">
+  <ul>
+  <li><a href="#pageutama" data-icon="home">UTAMA</a></li>
+  <li><a href="#" data-icon="grid" class="ui-btn-active ui-state-persist">DAFTAR</a></li>
+  <li><a href="#pagedirektori" data-icon="star">JADUAL</a></li>
+  </ul>
+    </div>
+		<h3>www.ppsppa.gov.my</h3>
+	</div>
+</body>
+</html>
